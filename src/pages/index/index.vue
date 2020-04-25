@@ -21,12 +21,12 @@
         />
         <p>活动</p>
       </div>
-      <div class="indexContent_1">
+      <div class="indexContent_1" @click="JumpVolume1">
         <img
           src="https://storyblok-image.ef.com.cn/unsafe/600x443/filters:focal(300x222:301x223):quality(100)/f/11/600x443/8156769438/home_2.jpg"
           alt
         />
-        <p>活动</p>
+        <p>问卷</p>
       </div>
       <div class="indexContent_1">
         <img
@@ -64,6 +64,9 @@ export default {
   methods: {
     JumpActivity() {
       mpvue.navigateTo({ url: "../activity/main" });
+    },
+    JumpVolume1() {
+      mpvue.navigateTo({ url: "../volume/volume1/main" });
     }
   },
 

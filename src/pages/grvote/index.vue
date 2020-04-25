@@ -37,7 +37,7 @@
       <!-- /选手描述 -->
       <div class="Middle_onde">
         <p>选手照片</p>
-        <img
+        <img class="Middle_ondeimg"
           src="https://bkimg.cdn.bcebos.com/pic/3c6d55fbb2fb4316dbe830c722a4462308f7d39c?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2U5Mg==,xp_5,yp_5"
           alt
         />
@@ -160,13 +160,13 @@ export default {
 .box1 {
   margin: 0 30rpx 0 30rpx;
 }
-.userinfo-avatar {
+.boximag .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
-.userinfo-avatar1 {
+.box .userinfo-avatar1 {
   width: 400rpx;
   height: 300rpx;
   /* margin: 20rpx; */
@@ -204,7 +204,8 @@ export default {
   background-color: white;
   margin-bottom: 20rpx;
 }
-.Middle_onde img {
+.box .Middle_onde img {
+  width: 620rpx;
   margin: 20rpx 0 40rpx 30rpx;
 }
 .Middle_two h1 {

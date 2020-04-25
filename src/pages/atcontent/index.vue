@@ -129,8 +129,6 @@
     </div>
     <!-- /选手信息模块 -->
 
-
-
     <!-- 音乐播放器 -->
     <!-- <audio :poster="poster" :src="src" id="myAudio" controls:turs loop></audio> -->
     <img
@@ -144,7 +142,6 @@
 </template>
 
 <script>
-
 export default {
   props: {},
   data() {
@@ -183,7 +180,9 @@ export default {
     },
     // 倒计时
     countTime() {
-      var endDate = new Date("2020-11-11:00:00:00");
+      var enddata1 = "2020-11-11:00:00:00";
+      var enddata2 = enddata1.replace(/-/g, "/");
+      var endDate = new Date(enddata2);
       var thiss = this;
       setInterval(function() {
         var startDate = new Date();
@@ -202,7 +201,7 @@ export default {
     audioPlay() {
       this.innerAudioContext = wx.createInnerAudioContext();
 
-      this.innerAudioContext.src = "http://m10.music.126.net/20200424182921/f3f776aedc2a71c4464598253dbcba26/ymusic/341e/9cc2/7c4f/b13ac6e62d3625524dde95fd1b1628bf.mp3";
+      this.innerAudioContext.src = "http://mp3.dwjgrw.cn/down/31389.mp3";
       this.innerAudioContext.autoplay = true;
     },
 
@@ -220,9 +219,7 @@ export default {
   onUnload() {
     this.innerAudioContext.stop();
   },
-  components: {
-
-  }
+  components: {}
 };
 </script>
 
@@ -330,15 +327,6 @@ export default {
   margin: 5rpx 0;
 }
 
-.muisbut {
-  width: 70rpx;
-  height: 70rpx;
-  border-radius: 50%;
-  position: fixed;
-  top: 50rpx;
-  right: 50rpx;
-  border: 3rpx solid cornflowerblue;
-}
 @-webkit-keyframes rotation {
   from {
     -webkit-transform: rotate(0deg);
@@ -353,6 +341,15 @@ export default {
   -moz-animation: rotation 3s linear infinite;
   -webkit-animation: rotation 3s linear infinite;
   -o-animation: rotation 3s linear infinite;
+}
+.box .muisbut {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  position: fixed;
+  top: 50rpx;
+  right: 50rpx;
+  border: 3rpx solid cornflowerblue;
 }
 </style>
 

@@ -157,7 +157,7 @@ export default {
   margin: 0 30rpx 120rpx 30rpx;
 }
 /* 头部个人信息img */
-.userinfo-avatar {
+.boximag .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;

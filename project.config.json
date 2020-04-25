@@ -22,13 +22,96 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "问卷1",
+					"pathName": "pages/volume/volume1/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷2",
+					"pathName": "pages/volume/volume2/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷3",
+					"pathName": "pages/volume/volume3/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷4",
+					"pathName": "pages/volume/volume4/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷5",
+					"pathName": "pages/volume/volume5/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷6",
+					"pathName": "pages/volume/volume6/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷7",
+					"pathName": "pages/volume/volume7/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷8",
+					"pathName": "pages/volume/volume8/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷9",
+					"pathName": "pages/volume/volume9/main",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/atcontent/main",
+					"pathName": "pages/atcontent/main",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/grvote/main",
+					"pathName": "pages/grvote/main",
+					"scene": null
+				}
+			]
 		}
 	}
 }
