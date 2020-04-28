@@ -1,15 +1,27 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
-		"es6": false,
+		"urlCheck": false,
+		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": false,
+		"scopeDataCheck": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "wxe4bd47c3417e998e",
+	"appid": "wx07c16a86468ddc2f",
 	"projectname": "my-applet",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -97,18 +109,27 @@
 					"id": -1,
 					"name": "问卷9",
 					"pathName": "pages/volume/volume9/main",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/atcontent/main",
 					"pathName": "pages/atcontent/main",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/grvote/main",
 					"pathName": "pages/grvote/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "主页",
+					"pathName": "pages/atcontent/main",
 					"scene": null
 				}
 			]

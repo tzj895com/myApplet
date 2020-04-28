@@ -15,15 +15,15 @@
     <!-- 报名投票数据框 -->
     <div class="atcontent_information">
       <div>
-        <p>60</p>
+        <p>{{Signedup}}</p>
         <p>已报名</p>
       </div>
       <div>
-        <p>999</p>
+        <p>{{Totalvotes}}</p>
         <p>总投票</p>
       </div>
       <div>
-        <p>45699</p>
+        <p>{{Views1}}</p>
         <p>浏览量</p>
       </div>
     </div>
@@ -45,8 +45,8 @@
 
     <!-- 搜索查询 -->
     <div class="atcontent_search">
-      <input type="text" placeholder="姓名" />
-      <span>搜索</span>
+      <input type="text" placeholder="姓名" v-model="search" />
+      <span @click="search1">搜索</span>
     </div>
     <!-- /搜索查询 -->
 
@@ -54,76 +54,38 @@
     <div class="atcontent_Grouping">
       <picker mode="selector" :range="array" :value="index" @change="dateChange" class="weui-input">
         <div class="divspan">
-          <span class="span1">选择分组</span>
+          <span class="span1">{{array[index]}}</span>
           <span>></span>
         </div>
       </picker>
     </div>
+
     <!-- /分组查询 -->
 
     <!-- 选手信息模块 -->
-    <div class="atcontent_Content">
-      <div class="atcontent_Content_1" @click="JumpGrvote">
-        <img
-          src="https://storyblok-image.ef.com.cn/unsafe/600x443/filters:focal(300x222:301x223):quality(100)/f/11/600x443/da11db5345/home_1.jpg"
-          alt
-        />
-        <p class="p1">洪晟</p>
-        <p class="p2">3票</p>
+    <div class="atcontent_Content" v-if="rowsfla">
+      <div
+        class="atcontent_Content_1"
+        @click="JumpGrvote"
+        v-for="(item,index) in rows"
+        :key="index"
+      >
+        <img :src="item.coverImg" alt />
+        <p class="p1">{{item.name}}</p>
+        <p class="p2">{{item.ticket}}票</p>
         <p class="p3">选择投票</p>
       </div>
-      <div class="atcontent_Content_1">
-        <img
-          src="https://storyblok-image.ef.com.cn/unsafe/600x443/filters:focal(300x222:301x223):quality(100)/f/11/600x443/8156769438/home_2.jpg"
-          alt
-        />
-        <p class="p1">洪晟</p>
-        <p class="p2">3票</p>
-        <p class="p3">选择投票</p>
-      </div>
-      <div class="atcontent_Content_1">
-        <img
-          src="https://storyblok-image.ef.com.cn/unsafe/1024x756/filters:focal(610x450:611x451):quality(100)/f/11/1220x900/cdab32ecc2/home_3.jpg"
-          alt
-        />
-        <p class="p1">洪晟</p>
-        <p class="p2">3票</p>
-        <p class="p3">选择投票</p>
-      </div>
-      <div class="atcontent_Content_1">
-        <img
-          src="https://storyblok-image.ef.com.cn/unsafe/600x443/filters:focal(300x222:301x223):quality(100)/f/11/600x443/a8a87f5dcf/home_4.jpg"
-          alt
-        />
-        <p class="p1">洪晟</p>
-        <p class="p2">3票</p>
-        <p class="p3">选择投票</p>
-      </div>
-      <div class="atcontent_Content_1">
-        <img
-          src="https://storyblok-image.ef.com.cn/unsafe/600x443/filters:focal(300x222:301x223):quality(100)/f/11/600x443/a8a87f5dcf/home_4.jpg"
-          alt
-        />
-        <p class="p1">洪晟</p>
-        <p class="p2">3票</p>
-        <p class="p3">选择投票</p>
-      </div>
-      <div class="atcontent_Content_1">
-        <img
-          src="https://storyblok-image.ef.com.cn/unsafe/600x443/filters:focal(300x222:301x223):quality(100)/f/11/600x443/a8a87f5dcf/home_4.jpg"
-          alt
-        />
-        <p class="p1">洪晟</p>
-        <p class="p2">3票</p>
-        <p class="p3">选择投票</p>
-      </div>
-      <div class="atcontent_Content_1">
-        <img
-          src="https://storyblok-image.ef.com.cn/unsafe/600x443/filters:focal(300x222:301x223):quality(100)/f/11/600x443/a8a87f5dcf/home_4.jpg"
-          alt
-        />
-        <p class="p1">洪晟</p>
-        <p class="p2">3票</p>
+    </div>
+    <div class="atcontent_Content" v-else>
+      <div
+        class="atcontent_Content_1"
+        @click="JumpGrvote"
+        v-for="(item,index) in myrows"
+        :key="index"
+      >
+        <img :src="item.coverImg" alt />
+        <p class="p1">{{item.name}}</p>
+        <p class="p2">{{item.ticket}}票</p>
         <p class="p3">选择投票</p>
       </div>
     </div>
@@ -146,11 +108,7 @@ export default {
   props: {},
   data() {
     return {
-      imgUrls: [
-        "http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/newsPicture/05558951-de60-49fb-b674-dd906c8897a6",
-        "http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/coursePicture/0fbcfdf7-0040-4692-8f84-78bb21f3395d",
-        "http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/management-school-picture/7683b32e-4e44-4b2f-9c03-c21f34320870"
-      ],
+      imgUrls: [],
       day: "0",
       hour: "00",
       min: "00",
@@ -158,15 +116,28 @@ export default {
       innerAudioContext: null, // 音频对象
       playImg: "../../static/img/play.png", // 播放或者暂停图片
       rotate: false,
-      array: ["全部", "美国", "中国", "巴西", "日本"]
+      array: ["全部", "北大青鸟鲁广校区", "北大青鸟徐东校区", "分组一", "null"],
+      index: 0,
+      // 投票数据
+      Signedup: "",
+      Totalvotes: "",
+      Views1: "",
+      // --
+      emd: "", //倒计时时间
+      rows: [],
+      myrows: [],
+      rowsfla: true,
+      search: "" //搜索的值
     };
   },
   computed: {},
   created() {
-    this.countTime();
+    this.gteindex();
+    this.gtesearch();
   },
   mounted() {
     this.audioPlay();
+    this.countTime();
   },
   watch: {},
   methods: {
@@ -180,9 +151,12 @@ export default {
     },
     // 倒计时
     countTime() {
-      var enddata1 = "2020-11-11:00:00:00";
-      var enddata2 = enddata1.replace(/-/g, "/");
-      var endDate = new Date(enddata2);
+      var endTime = this.emd;
+      console.log(this.emd);
+
+      var newTime = endTime.replace(/-/g, "/");
+      var endDate = new Date(newTime);
+
       var thiss = this;
       setInterval(function() {
         var startDate = new Date();
@@ -214,6 +188,73 @@ export default {
         console.log("暂停");
         this.innerAudioContext.pause();
       }
+    },
+    // 首页数据
+    gteindex() {
+      this.$http
+        .post("https://mp.zymcloud.com/hp-hd/applet/activity/list", {
+          activityId: 1
+        })
+        .then(res => {
+          // console.log(res.data);
+          this.imgUrls.push(res.data.coverList[0].url);
+          this.Signedup = res.data.hdActivity.enroll;
+          this.Totalvotes = res.data.hdActivity.sumVote;
+          this.Views1 = res.data.hdActivity.browse;
+          this.emd = res.data.hdActivity.end;
+        });
+    },
+    gtesearch() {
+      this.$http
+        .post(
+          "https://mp.zymcloud.com/hp-hd/applet/activity/activityPlayer",
+          {}
+        )
+        .then(res => {
+          // console.log(res);
+          this.rows = res.rows.slice(0, 58);
+          // console.log(this.rows);
+        });
+    },
+    dateChange(e) {
+      if (e.mp.detail.value == 1) {
+        this.myrows = this.rows.filter(
+          item => item.groupName == "北大青鸟鲁广校区"
+        );
+        this.index = 1;
+        this.rowsfla = false;
+        return;
+      }
+      if (e.mp.detail.value == 2) {
+        this.myrows = this.rows.filter(
+          item => item.groupName == "北大青鸟鲁广校区"
+        );
+        this.index = 2;
+        this.rowsfla = false;
+        return;
+      }
+      if (e.mp.detail.value == 3) {
+        this.myrows = this.rows.filter(item => item.groupName == "分组一");
+        this.rowsfla = false;
+        this.index = 3;
+        return;
+      }
+      if (e.mp.detail.value == 4) {
+        this.myrows = this.rows.filter(item => item.groupName == null);
+        this.rowsfla = false;
+        this.index = 4;
+        return;
+      } else {
+        this.rowsfla = true;
+        this.index = 0;
+        return;
+      }
+    },
+    search1() {
+      console.log(1);
+
+      this.myrows = this.rows.filter(item => item.name == this.search);
+      this.rowsfla = false;
     }
   },
   onUnload() {
@@ -286,10 +327,11 @@ export default {
   padding: 15rpx;
   background-color: cornflowerblue;
   color: white;
+  font-size: 24rpx;
 }
 .atcontent_Grouping .span1 {
-  margin-right: 80rpx;
-  margin-left: 50rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
 }
 .atcontent_Content {
   display: flex;

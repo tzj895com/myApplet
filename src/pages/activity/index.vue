@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     JumpAtcontent() {
-       const url = "../atcontent/main";
+      const url = "../atcontent/main";
       if (mpvuePlatform === "wx") {
         mpvue.switchTab({ url });
       } else {
@@ -64,7 +64,8 @@ export default {
     }
   },
 
-  created() {}
+  created() {},
+  mounted() {}
 };
 </script>
 
